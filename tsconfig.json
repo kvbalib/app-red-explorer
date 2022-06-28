@@ -15,6 +15,6 @@
     },
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*"],
-  "typeRoots": ["./src/models"]
+  "include": ["src/**/*", "src/models/global.d.ts"],
+  "typeRoots": ["src/models"]
 }

@@ -1,3 +1,6 @@
+const scssRegex = /\.scss$/i
+const scssModuleRegex = /\.module\.scss$/i
+
 module.exports = [
   {
     test: /native_modules\/.+\.node$/,
@@ -23,4 +26,46 @@ module.exports = [
       },
     },
   },
-];
+  {
+    test: scssRegex,
+    exclude: scssModuleRegex,
+    use: [
+      {
+        loader: 'style-loader',
+      },
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+          modules: {
+            mode: 'icss',
+          },
+        },
+      },
+      {
+        loader: 'sass-loader',
+      },
+    ],
+    sideEffects: true,
+  },
+  {
+    test: scssModuleRegex,
+    use: [
+      {
+        loader: 'style-loader',
+      },
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1,
+          modules: {
+            mode: 'local',
+          },
+        },
+      },
+      {
+        loader: 'sass-loader',
+      },
+    ],
+  },
+]
