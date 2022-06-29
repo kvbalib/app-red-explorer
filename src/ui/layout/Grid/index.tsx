@@ -5,7 +5,7 @@ import { Main } from '../Main'
 import { useStyles } from './Grid.styles'
 
 export const Grid = () => {
-  const styles = useStyles()
+  const styles = useStyles(null)
 
   return (
     <Box sx={styles.appContainer}>

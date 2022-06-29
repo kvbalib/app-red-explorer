@@ -13,7 +13,8 @@
     "paths": {
       "*": ["node_modules/*"]
     },
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "strict": true
   },
   "include": ["src/**/*", "src/models/global.d.ts"],
   "typeRoots": ["src/models"]

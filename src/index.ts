@@ -1,4 +1,4 @@
-import { app,BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import electronIsDev from 'electron-is-dev'
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string
@@ -10,6 +10,8 @@ if (require('electron-squirrel-startup')) {
 
 const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
+    titleBarStyle: 'hidden',
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
@@ -35,4 +37,8 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }
+})
+
+ipcMain.handle('openFile', async (event, args) => {
+  await shell.openPath(args)
 })

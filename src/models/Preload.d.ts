@@ -1,4 +1,8 @@
+import { CurrentDirectoryType, DirectoryContentsType, OpenFileType, SelectFileType } from '../preload'
+
 export interface IPreload {
-  directoryContents: (path: string) => Promise<{ name: string, type: 'directory' | 'file' }[]>
-  currentDirectory: () => string
+  directoryContents: DirectoryContentsType
+  currentDirectory: CurrentDirectoryType
+  openFile: OpenFileType
+  selectFile: SelectFileType
 }
