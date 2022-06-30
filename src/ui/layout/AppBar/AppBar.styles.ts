@@ -29,5 +29,5 @@ export const useStyles = useMakeStyles(() => ({
     justifyContent: 'center',
     mt: 2,
     WebkitAppRegion: 'no-drag',
-  }
+  },
 }))

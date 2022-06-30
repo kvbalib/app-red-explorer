@@ -5,5 +5,4 @@ import { useEffect } from 'react'
  *
  * @param callback
  */
-export const useMount = (callback: () => void) =>
-  useEffect(() => callback(), [])
+export const useMount = (callback: () => void) => useEffect(() => callback(), [])

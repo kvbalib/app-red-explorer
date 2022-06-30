@@ -1,3 +1,5 @@
+import { MouseEventHandler } from 'react'
+
 import { Box } from '@mui/system'
 import { FaFile, FaRegFolder } from 'react-icons/fa'
 
@@ -15,9 +17,19 @@ export const FilesystemItem = ({ item, setPath }: IFilesystemItemProps) => {
     else await window.api.openFile(item.path)
   }
 
+  const handleRightClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+    // TODO: add menu: browse / open / add to bookmarks
+  }
+
   return (
     // @TODO: implement drag and drop
-    <ButtonOverlay styles={styles.item} key={item.name} onClick={handleSetPath} isDoubleClick>
+    <ButtonOverlay
+      styles={styles.item}
+      key={item.name}
+      onClick={handleSetPath}
+      onRightClick={handleRightClick}
+      isDoubleClick
+    >
       <Icon size={48} />
       <Box sx={styles.caption} children={item.name} />
     </ButtonOverlay>

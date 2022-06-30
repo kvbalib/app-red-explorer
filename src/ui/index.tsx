@@ -7,7 +7,7 @@ import { Grid } from './layout/Grid'
 export const App = () => (
   <ThemeProvider theme={theme}>
     <NavigationProvider>
-      <Grid/>
+      <Grid />
     </NavigationProvider>
   </ThemeProvider>
 )

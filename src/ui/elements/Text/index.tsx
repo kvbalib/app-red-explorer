@@ -1,5 +1,6 @@
-import { Box } from '@mui/system'
 import { FC, PropsWithChildren } from 'react'
+
+import { Box } from '@mui/system'
 
 import { Typography } from '../../../theme/Variants'
 import { ITypographyProps } from './Text'

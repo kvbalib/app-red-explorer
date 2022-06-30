@@ -11,5 +11,5 @@ export enum Typography {
   subtitle2 = 'subtitle2',
   button = 'button',
   overline = 'overline',
-  caption = 'caption'
+  caption = 'caption',
 }

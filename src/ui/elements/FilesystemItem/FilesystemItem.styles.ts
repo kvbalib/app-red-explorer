@@ -16,6 +16,6 @@ export const useStyles = useMakeStyles(() => ({
     textOverflow: 'ellipsis',
     WebkitLineClamp: 2,
     boxOrient: 'vertical',
-    wordBreak: 'break-all'
-  }
+    wordBreak: 'break-all',
+  },
 }))

@@ -1,6 +1,7 @@
+import { useMemo } from 'react'
+
 import { Theme } from '@mui/system/createTheme'
 import { SxProps } from '@mui/system/styleFunctionSx'
-import { useMemo } from 'react'
 
 interface IStyles {
   [key: string]: SxProps<Theme>
@@ -41,8 +42,10 @@ interface IStyles {
  *
  * TODO: add return types
  */
-export const useMakeStyles = <TStyleProps = unknown>(stylesCallback: (props: TStyleProps) => IStyles): ((props: TStyleProps) => IStyles) => (props) => {
-  const deps = props ? Object.values(props) : []
+export const useMakeStyles =
+  <TStyleProps = unknown>(stylesCallback: (props: TStyleProps) => IStyles): ((props: TStyleProps) => IStyles) =>
+  (props) => {
+    const deps = props ? Object.values(props) : []
 
-  return useMemo(() => stylesCallback(props), deps)
-}
+    return useMemo(() => stylesCallback(props), deps)
+  }

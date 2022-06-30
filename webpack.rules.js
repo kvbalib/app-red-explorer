@@ -1,5 +1,5 @@
-const scssRegex = /\.scss$/i
-const scssModuleRegex = /\.module\.scss$/i
+const scssRegex = /\.scss$/i;
+const scssModuleRegex = /\.module\.scss$/i;
 
 module.exports = [
   {
@@ -46,7 +46,6 @@ module.exports = [
         loader: 'sass-loader',
       },
     ],
-    sideEffects: true,
   },
   {
     test: scssModuleRegex,
@@ -68,4 +67,4 @@ module.exports = [
       },
     ],
   },
-]
+];

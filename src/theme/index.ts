@@ -1,4 +1,4 @@
-import { createTheme,  } from '@mui/system'
+import { createTheme } from '@mui/system'
 
 import { ui } from '../constants/ui'
 import { palette } from './palette'
@@ -9,4 +9,3 @@ export const theme = createTheme({
   typography,
   spacing: (val: number) => val * ui.spacingMultiplier,
 })
-

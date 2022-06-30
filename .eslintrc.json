@@ -16,10 +16,7 @@
   "parserOptions": {
     "sourceType": "module"
   },
-  "plugins": [
-    "simple-import-sort",
-    "import"
-  ],
+  "plugins": ["simple-import-sort", "import"],
   "rules": {
     "quotes": [2, "single", { "avoidEscape": true }],
     "object-curly-spacing": ["error", "always"],

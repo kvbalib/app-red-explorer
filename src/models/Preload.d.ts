@@ -1,8 +1,20 @@
-import { CurrentDirectoryType, DirectoryContentsType, OpenFileType, SelectFileType } from '../preload'
+import {
+  CurrentDirectoryType,
+  DirectoryContentsType,
+  GetBookmarksType,
+  OpenFileType,
+  SelectFolderType,
+} from '../preload'
 
 export interface IPreload {
   directoryContents: DirectoryContentsType
   currentDirectory: CurrentDirectoryType
+  getBookmarks: GetBookmarksType
   openFile: OpenFileType
-  selectFile: SelectFileType
+  selectFolder: SelectFolderType
+}
+
+export interface IBookmark {
+  name: string
+  path: string
 }

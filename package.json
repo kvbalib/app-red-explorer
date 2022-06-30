@@ -1,5 +1,6 @@
 {
   "name": "red-explorer",
+  "sideEffects": false,
   "productName": "red-explorer",
   "version": "1.0.0",
   "description": "Simple explorer.",
@@ -9,7 +10,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts,.tsx . --fix"
+    "lint": "eslint --ext .ts,.tsx .",
+    "format": "prettier --write \"**/*.{html,json,js,jsx,ts,tsx,css,scss}\""
   },
   "keywords": [],
   "author": {
@@ -72,6 +74,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.64",
     "@electron-forge/maker-zip": "^6.0.0-beta.64",
     "@electron-forge/plugin-webpack": "6.0.0-beta.64",
+    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
@@ -86,6 +89,7 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
     "node-loader": "^2.0.0",
+    "prettier": "^2.7.1",
     "sass": "^1.53.0",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.0.0",

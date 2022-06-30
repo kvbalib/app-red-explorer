@@ -12,5 +12,5 @@ export const useStyles = useMakeStyles(() => ({
     minHeight: '100vh',
     overflow: 'hidden',
     position: 'relative',
-  }
+  },
 }))

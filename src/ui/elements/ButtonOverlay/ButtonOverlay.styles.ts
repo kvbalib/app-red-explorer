@@ -21,12 +21,11 @@ export const useStyles = useMakeStyles<SxProps<Theme> | undefined>((props) => ({
     },
     '&:disabled': {
       opacity: 0.75,
-      transform: 'none',
     },
     '&:focus': {
-    outline: 'none',
-    boxShadow: 'none',
+      outline: 'none',
+      boxShadow: 'none',
     },
-    ...props
-  }
+    ...props,
+  },
 }))

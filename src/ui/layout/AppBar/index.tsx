@@ -1,5 +1,6 @@
-import { Box, useTheme } from '@mui/system'
 import { MouseEventHandler } from 'react'
+
+import { Box, useTheme } from '@mui/system'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import { GiBirdClaw } from 'react-icons/gi'
 
@@ -28,30 +29,16 @@ export const AppBar = () => {
 
   return (
     <Box sx={styles.container} component={'nav'}>
-      <GiBirdClaw color={palette.primary.main} size={48}/>
-      <Text variant={Typography.button} children={'Red Explorer'}/>
+      <GiBirdClaw color={palette.primary.main} size={48} />
+      <Text variant={Typography.overline} children={'Red Explorer'} />
       <Box sx={styles.buttonsWrapper}>
-        <ButtonOverlay
-          onClick={goBack}
-          disabled={!canGoBack}
-          styles={styles.iconButton}
-        >
-          <FaArrowLeft
-            color={canGoBack ? palette.primary.main : palette.background.light}
-            size={32}
-          />
-          <Text variant={Typography.overline} children={'Back'}/>
+        <ButtonOverlay onClick={goBack} disabled={!canGoBack} styles={styles.iconButton}>
+          <FaArrowLeft color={canGoBack ? palette.primary.main : palette.background.light} size={32} />
+          <Text variant={Typography.overline} children={'Back'} />
         </ButtonOverlay>
-        <ButtonOverlay
-          onClick={goForward}
-          disabled={!canGoForward}
-          styles={styles.iconButton}
-        >
-          <FaArrowRight
-            color={canGoForward ? palette.primary.main : palette.background.light}
-            size={32}
-          />
-          <Text variant={Typography.overline} children={'Next'}/>
+        <ButtonOverlay onClick={goForward} disabled={!canGoForward} styles={styles.iconButton}>
+          <FaArrowRight color={canGoForward ? palette.primary.main : palette.background.light} size={32} />
+          <Text variant={Typography.overline} children={'Next'} />
         </ButtonOverlay>
       </Box>
     </Box>
