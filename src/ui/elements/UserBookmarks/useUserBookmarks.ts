@@ -1,44 +1,40 @@
-import { useEffect, useState } from 'react'
+import { useState } from '@hookstate/core'
+import { useEffect } from 'react'
 
 import { StorageKeys } from '../../../constants/storageKeys'
 import { IBookmark } from '../../../models/Preload'
 import { LocalStore } from '../../../services/LocalStore'
+import { bookmarksState } from '../../../state/bookmarks'
+import { useMount } from '../../../utils/hooks/useMount'
 import { useToggle } from '../../../utils/hooks/useToggle'
 
 export const useUserBookmarks = () => {
+  const state = useState(bookmarksState)
   const { handleToggle, handleHide, isVisible: isDeleteMode } = useToggle()
-  const [refreshToken, setRefreshToken] = useState(0)
-  const [bookmarksState, setBookmarksState] = useState<IBookmark[]>([])
 
   const handleAdd = async () => {
     const bookmark = await window.api.selectFolder()
 
-    if (bookmark) {
-      const prev = LocalStore.get<IBookmark[]>(StorageKeys.Bookmarks) ?? []
-      const data = [...prev, bookmark]
-
-      LocalStore.set(StorageKeys.Bookmarks, data)
-      setRefreshToken((prev) => prev + 1)
-    }
+    if (bookmark) state.set((prev) => [...prev, bookmark])
   }
 
   const handleDelete = ({ name, path }: IBookmark) => {
-    const prev = LocalStore.get<IBookmark[]>(StorageKeys.Bookmarks) ?? []
-    const data = prev.filter((item) => !(item.name === name && item.path === path))
-
-    LocalStore.set(StorageKeys.Bookmarks, data)
-    setRefreshToken((prev) => prev + 1)
+    state.set((prev) => prev.filter((item) => !(item.name === name && item.path === path)))
+    handleHide()
   }
 
-  useEffect(() => {
+  useMount(() => {
     const data = LocalStore.get<IBookmark[]>(StorageKeys.Bookmarks) ?? []
 
-    if (data) setBookmarksState(data)
-    if (isDeleteMode) handleHide()
-  }, [refreshToken])
+    if (data) state.set(data)
+  })
+
+  useEffect(() => {
+    LocalStore.set(StorageKeys.Bookmarks, state.get())
+  }, [state])
 
   return {
-    bookmarks: bookmarksState,
+    bookmarks: state.get(),
     handleAdd,
     handleDelete,
     isDeleteMode,

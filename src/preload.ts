@@ -14,8 +14,8 @@ const minimizeWindow = () => ipcRenderer.send(ElectronEvents.WindowMinimize)
 
 const maximizeWindow = () => ipcRenderer.send(ElectronEvents.WindowMaximize)
 
-const directoryContents = async (path: string, hideSystemFiles: boolean) => {
-  const results = await readdir(path, { withFileTypes: true })
+const directoryContents = async (dirPath: string, hideSystemFiles: boolean) => {
+  const results = await readdir(dirPath, { withFileTypes: true })
   const list = results.filter((item) => !regExp.systemFile.test(item.name))
 
   return (hideSystemFiles ? list : results)
@@ -23,7 +23,7 @@ const directoryContents = async (path: string, hideSystemFiles: boolean) => {
       name: entry.name,
       shortName: truncateFilename(entry.name, ui.maxFilenameLength),
       type: entry.isDirectory() ? Filetypes.Directory : Filetypes.File,
-      path: `${path}/${entry.name}`,
+      path: path.join(dirPath, entry.name),
     }))
     .sort((n1, n2) => {
       if (n1.type > n2.type) return 1
@@ -60,10 +60,10 @@ contextBridge.exposeInMainWorld('api', {
 })
 
 // Import types in src/models/Preload.d.ts
-export type DirectoryContentsType = typeof directoryContents
 export type CurrentDirectoryType = typeof currentDirectory
-export type OpenFileType = typeof openFile
+export type DirectoryContentsType = typeof directoryContents
 export type GetBookmarksType = typeof getBookmarks
-export type SelectFolderType = typeof selectFolder
 export type MaximizeWindowType = typeof maximizeWindow
 export type MinimizeWindowType = typeof minimizeWindow
+export type OpenFileType = typeof openFile
+export type SelectFolderType = typeof selectFolder

@@ -19,11 +19,11 @@ export const FilesystemItem = ({ item, setPath }: IFilesystemItemProps) => {
   }
 
   const handleRightClick: MouseEventHandler<HTMLButtonElement> = (event) => {
-    // TODO: add menu: browse / open / add to bookmarks
+    // TODO: add menu: browse / open / add to bookmarks hookstate
   }
 
+  // TODO: implement drag & drop
   return (
-    // @TODO: implement drag and drop
     <ButtonOverlay
       styles={styles.item}
       key={item.name}

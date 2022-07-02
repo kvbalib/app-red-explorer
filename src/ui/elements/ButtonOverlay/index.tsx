@@ -8,23 +8,25 @@ export const ButtonOverlay: FC<PropsWithChildren<IButtonOverlayProps>> = ({
   children,
   disabled,
   isDoubleClick,
+  isDraggable,
   onClick,
+  onDragStart,
   onRightClick,
   styles: styleProps,
 }) => {
   const styles = useStyles(styleProps)
-  const onDoubleClick = isDoubleClick ? onClick : undefined
-  const onSingleClick = !isDoubleClick ? onClick : undefined
 
   return (
     <Box
       sx={styles.root}
       component={'button'}
       disabled={disabled}
-      onDoubleClick={onDoubleClick}
-      onClick={onSingleClick}
+      onDoubleClick={isDoubleClick ? onClick : undefined}
+      onClick={!isDoubleClick ? onClick : undefined}
       onContextMenu={onRightClick}
       children={children}
+      onDragStart={onDragStart}
+      draggable={isDraggable}
     />
   )
 }

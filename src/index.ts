@@ -35,7 +35,7 @@ const createWindow = (): void => {
   }
 }
 
-app.on('ready', createWindow)
+app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -49,8 +49,8 @@ app.on('activate', () => {
   }
 })
 
-ipcMain.handle(ElectronEvents.OpenFile, async (event, args) => {
-  await shell.openPath(args)
+ipcMain.handle(ElectronEvents.OpenFile, async (event, path: string) => {
+  await shell.openPath(path)
 })
 
 // TODO: add error handling

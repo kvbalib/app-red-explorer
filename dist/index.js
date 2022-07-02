@@ -66,7 +66,7 @@ var createWindow = function () {
         mainWindow.webContents.openDevTools({ mode: 'detach' });
     }
 };
-electron_1.app.on('ready', createWindow);
+electron_1.app.whenReady().then(createWindow);
 electron_1.app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
         electron_1.app.quit();
@@ -77,10 +77,10 @@ electron_1.app.on('activate', function () {
         createWindow();
     }
 });
-electron_1.ipcMain.handle(electronEvents_1.ElectronEvents.OpenFile, function (event, args) { return __awaiter(void 0, void 0, void 0, function () {
+electron_1.ipcMain.handle(electronEvents_1.ElectronEvents.OpenFile, function (event, path) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, electron_1.shell.openPath(args)];
+            case 0: return [4 /*yield*/, electron_1.shell.openPath(path)];
             case 1:
                 _a.sent();
                 return [2 /*return*/];

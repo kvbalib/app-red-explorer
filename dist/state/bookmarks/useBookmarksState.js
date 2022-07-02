@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -46,40 +35,61 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 exports.__esModule = true;
-exports.FilesystemItem = void 0;
-var jsx_runtime_1 = require("react/jsx-runtime");
-var system_1 = require("@mui/system");
-var fa_1 = require("react-icons/fa");
-var filetypes_1 = require("../../../constants/filetypes");
-var ui_1 = require("../../../constants/ui");
-var ButtonOverlay_1 = require("../ButtonOverlay");
-var FilesystemItem_styles_1 = require("./FilesystemItem.styles");
-var FilesystemItem = function (_a) {
-    var item = _a.item, setPath = _a.setPath;
-    var styles = (0, FilesystemItem_styles_1.useStyles)(null);
-    var isDirectory = item.type === filetypes_1.Filetypes.Directory;
-    var Icon = isDirectory ? fa_1.FaRegFolder : fa_1.FaFile;
-    var handleSetPath = function () { return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!isDirectory) return [3 /*break*/, 1];
-                    setPath(item.path);
-                    return [3 /*break*/, 3];
-                case 1: return [4 /*yield*/, window.api.openFile(item.path)];
-                case 2:
-                    _a.sent();
-                    _a.label = 3;
-                case 3: return [2 /*return*/];
+exports.useBookmarksState = void 0;
+var core_1 = require("@hookstate/core");
+var storageKeys_1 = require("../../constants/storageKeys");
+var LocalStore_1 = require("../../services/LocalStore");
+var useMount_1 = require("../../utils/hooks/useMount");
+var index_1 = require("./index");
+var useBookmarksState = function () {
+    var state = (0, core_1.useState)(index_1.bookmarksState);
+    var handleAdd = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var bookmark, prev, data;
+        var _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, window.api.selectFolder()];
+                case 1:
+                    bookmark = _b.sent();
+                    if (bookmark) {
+                        prev = (_a = LocalStore_1.LocalStore.get(storageKeys_1.StorageKeys.Bookmarks)) !== null && _a !== void 0 ? _a : [];
+                        data = __spreadArray(__spreadArray([], prev, true), [bookmark], false);
+                        LocalStore_1.LocalStore.set(storageKeys_1.StorageKeys.Bookmarks, data);
+                        state.set(data);
+                    }
+                    return [2 /*return*/];
             }
         });
     }); };
-    var handleRightClick = function (event) {
-        // TODO: add menu: browse / open / add to bookmarks
+    var handleDelete = function (_a) {
+        var _b;
+        var name = _a.name, path = _a.path;
+        var prev = (_b = LocalStore_1.LocalStore.get(storageKeys_1.StorageKeys.Bookmarks)) !== null && _b !== void 0 ? _b : [];
+        var data = prev.filter(function (item) { return !(item.name === name && item.path === path); });
+        LocalStore_1.LocalStore.set(storageKeys_1.StorageKeys.Bookmarks, data);
+        state.set(data);
     };
-    // TODO: implement drag & drop
-    return ((0, jsx_runtime_1.jsxs)(ButtonOverlay_1.ButtonOverlay, __assign({ styles: styles.item, onClick: handleSetPath, onRightClick: handleRightClick, isDoubleClick: true }, { children: [(0, jsx_runtime_1.jsx)(Icon, { size: ui_1.ui.fileIconSize }, void 0), (0, jsx_runtime_1.jsx)(system_1.Box, { sx: styles.caption, children: item.shortName }, void 0)] }), item.name));
+    (0, useMount_1.useMount)(function () {
+        var _a;
+        var data = (_a = LocalStore_1.LocalStore.get(storageKeys_1.StorageKeys.Bookmarks)) !== null && _a !== void 0 ? _a : [];
+        if (data)
+            state.set(data);
+    });
+    return {
+        bookmarks: state.get(),
+        handleAdd: handleAdd,
+        handleDelete: handleDelete
+    };
 };
-exports.FilesystemItem = FilesystemItem;
-//# sourceMappingURL=index.js.map
+exports.useBookmarksState = useBookmarksState;
+//# sourceMappingURL=useBookmarksState.js.map

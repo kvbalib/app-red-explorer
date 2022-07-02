@@ -6,6 +6,7 @@ exports.ElectronEvents = void 0;
  */
 var ElectronEvents;
 (function (ElectronEvents) {
+    ElectronEvents["OnDragStart"] = "OnDragStart";
     ElectronEvents["OpenFile"] = "OpenFile";
     ElectronEvents["GetBookmarks"] = "GetBookmarks";
     ElectronEvents["SelectFolder"] = "SelectFolder";

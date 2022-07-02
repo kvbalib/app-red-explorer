@@ -49,11 +49,11 @@ var ui_1 = require("./constants/ui");
 var truncateFilename_1 = require("./utils/helpers/truncateFilename");
 var minimizeWindow = function () { return electron_1.ipcRenderer.send(electronEvents_1.ElectronEvents.WindowMinimize); };
 var maximizeWindow = function () { return electron_1.ipcRenderer.send(electronEvents_1.ElectronEvents.WindowMaximize); };
-var directoryContents = function (path, hideSystemFiles) { return __awaiter(void 0, void 0, void 0, function () {
+var directoryContents = function (dirPath, hideSystemFiles) { return __awaiter(void 0, void 0, void 0, function () {
     var results, list;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, promises_1.readdir)(path, { withFileTypes: true })];
+            case 0: return [4 /*yield*/, (0, promises_1.readdir)(dirPath, { withFileTypes: true })];
             case 1:
                 results = _a.sent();
                 list = results.filter(function (item) { return !regExp_1.regExp.systemFile.test(item.name); });
@@ -62,7 +62,7 @@ var directoryContents = function (path, hideSystemFiles) { return __awaiter(void
                         name: entry.name,
                         shortName: (0, truncateFilename_1.truncateFilename)(entry.name, ui_1.ui.maxFilenameLength),
                         type: entry.isDirectory() ? filetypes_1.Filetypes.Directory : filetypes_1.Filetypes.File,
-                        path: "".concat(path, "/").concat(entry.name)
+                        path: path_1["default"].join(dirPath, entry.name)
                     }); })
                         .sort(function (n1, n2) {
                         if (n1.type > n2.type)

@@ -1,6 +1,6 @@
 import { Theme } from '@mui/system/createTheme'
 import { SxProps } from '@mui/system/styleFunctionSx'
-import { MouseEventHandler } from 'react'
+import { DragEventHandler, MouseEventHandler } from 'react'
 
 type ClickHandlerType = MouseEventHandler<HTMLButtonElement> | (() => void)
 
@@ -10,4 +10,6 @@ export interface IButtonOverlayProps {
   onRightClick?: ClickHandlerType
   styles?: SxProps<Theme>
   disabled?: boolean
+  onDragStart?: DragEventHandler<HTMLButtonElement>
+  isDraggable?: boolean
 }
