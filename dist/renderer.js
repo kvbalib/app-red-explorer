@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 exports.__esModule = true;
-require('./index.scss');
-require('./app');
+require("./app");
+require("./index.scss");
 //# sourceMappingURL=renderer.js.map

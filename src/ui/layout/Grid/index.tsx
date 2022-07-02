@@ -1,7 +1,8 @@
 import { Box } from '@mui/system'
 
-import { Main } from '../../views/Main'
 import { AppBar } from '../AppBar'
+import { LeftPanel } from '../LeftPanel'
+import { RightPanel } from '../RightPanel'
 import { useStyles } from './Grid.styles'
 
 export const Grid = () => {
@@ -10,7 +11,10 @@ export const Grid = () => {
   return (
     <Box sx={styles.appContainer}>
       <AppBar />
-      <Main />
+      <Box sx={styles.main} component={'main'}>
+        <LeftPanel />
+        <RightPanel />
+      </Box>
     </Box>
   )
 }

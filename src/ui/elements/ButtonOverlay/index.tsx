@@ -1,6 +1,5 @@
-import { FC, PropsWithChildren } from 'react'
-
 import { Box } from '@mui/system'
+import { FC, PropsWithChildren } from 'react'
 
 import { IButtonOverlayProps } from './ButtonOverlay'
 import { useStyles } from './ButtonOverlay.styles'

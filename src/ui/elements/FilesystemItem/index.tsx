@@ -1,6 +1,5 @@
-import { MouseEventHandler } from 'react'
-
 import { Box } from '@mui/system'
+import { MouseEventHandler } from 'react'
 import { FaFile, FaRegFolder } from 'react-icons/fa'
 
 import { ButtonOverlay } from '../ButtonOverlay'
@@ -31,7 +30,7 @@ export const FilesystemItem = ({ item, setPath }: IFilesystemItemProps) => {
       isDoubleClick
     >
       <Icon size={48} />
-      <Box sx={styles.caption} children={item.name} />
+      <Box sx={styles.caption} children={item.shortName} />
     </ButtonOverlay>
   )
 }

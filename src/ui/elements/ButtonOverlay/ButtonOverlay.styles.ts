@@ -13,7 +13,6 @@ export const useStyles = useMakeStyles<SxProps<Theme> | undefined>((props) => ({
     p: 0,
     transition: `all ${ui.cssTransitionDefault}ms ease-in-out`,
     '&:hover': {
-      // filter: 'hue-rotate(180deg)', not sure about that
       opacity: 0.75,
     },
     '&:active': {

@@ -13,4 +13,14 @@ export const useStyles = useMakeStyles(() => ({
     overflow: 'hidden',
     position: 'relative',
   },
+  main: {
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    gridArea: 'main',
+    maxHeight: '100%',
+    maxWidth: '100vw',
+    overflowY: 'hidden',
+    position: 'relative',
+    width: '100%',
+  },
 }))

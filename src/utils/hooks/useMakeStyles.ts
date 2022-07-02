@@ -1,7 +1,6 @@
-import { useMemo } from 'react'
-
 import { Theme } from '@mui/system/createTheme'
 import { SxProps } from '@mui/system/styleFunctionSx'
+import { useMemo } from 'react'
 
 interface IStyles {
   [key: string]: SxProps<Theme>

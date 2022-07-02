@@ -30,4 +30,7 @@ export const useStyles = useMakeStyles(() => ({
     mt: 2,
     WebkitAppRegion: 'no-drag',
   },
+  title: {
+    color: 'text.secondary',
+  },
 }))

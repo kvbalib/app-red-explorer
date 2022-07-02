@@ -9,9 +9,6 @@ export const useStyles = useMakeStyles(() => ({
     justifyContent: 'space-between',
     position: 'relative',
   },
-  addIcon: {
-    color: 'primary.main',
-  },
   bookmarks: {
     display: 'flex',
     flexDirection: 'column',
@@ -20,7 +17,11 @@ export const useStyles = useMakeStyles(() => ({
   footer: {
     display: 'flex',
     flexFlow: 'row nowrap',
+    gap: 4,
     justifyContent: 'center',
     mt: 4,
+  },
+  icon: {
+    color: 'background.light',
   },
 }))

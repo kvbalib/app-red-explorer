@@ -3,3 +3,5 @@ assets
 .idea
 node_modules
 /build
+.webpack
+dist
