@@ -5,8 +5,10 @@ exports.ui = {
     bookmarkIconSize: 24,
     cssTransitionDefault: 250,
     filesRefreshInterval: 5000,
+    fileIconSize: 48,
+    hideSystemFiles: true,
     maxFilenameLength: 16,
     spacingMultiplier: 4,
-    hideSystemFiles: true
+    windowControlsSize: 20
 };
 //# sourceMappingURL=ui.js.map

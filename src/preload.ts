@@ -3,6 +3,7 @@ import { readdir } from 'fs/promises'
 import path from 'path'
 
 import { ElectronEvents } from './constants/electronEvents'
+import { Filetypes } from './constants/filetypes'
 import { regExp } from './constants/regExp'
 import { ui } from './constants/ui'
 import { IFilesystemItem } from './models/Filesystem'
@@ -21,7 +22,7 @@ const directoryContents = async (path: string, hideSystemFiles: boolean) => {
     .map<IFilesystemItem>((entry) => ({
       name: entry.name,
       shortName: truncateFilename(entry.name, ui.maxFilenameLength),
-      type: entry.isDirectory() ? 'directory' : 'file',
+      type: entry.isDirectory() ? Filetypes.Directory : Filetypes.File,
       path: `${path}/${entry.name}`,
     }))
     .sort((n1, n2) => {

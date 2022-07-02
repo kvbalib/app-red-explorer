@@ -16,6 +16,10 @@ export const useStyles = useMakeStyles(() => ({
     WebkitUserSelect: 'none',
     WebkitAppRegion: 'drag',
   },
+  buttonLabel: {
+    lineHeight: 1,
+    mt: 2,
+  },
   buttonsWrapper: {
     display: 'flex',
     gap: 4,
@@ -26,7 +30,6 @@ export const useStyles = useMakeStyles(() => ({
     color: 'primary.main',
     flexDirection: 'column',
     justifyContent: 'center',
-    mt: 2,
     WebkitAppRegion: 'no-drag',
   },
   windowControls: {

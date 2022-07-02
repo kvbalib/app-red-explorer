@@ -43,9 +43,12 @@ var electron_1 = require("electron");
 var promises_1 = require("fs/promises");
 var path_1 = __importDefault(require("path"));
 var electronEvents_1 = require("./constants/electronEvents");
+var filetypes_1 = require("./constants/filetypes");
 var regExp_1 = require("./constants/regExp");
 var ui_1 = require("./constants/ui");
 var truncateFilename_1 = require("./utils/helpers/truncateFilename");
+var minimizeWindow = function () { return electron_1.ipcRenderer.send(electronEvents_1.ElectronEvents.WindowMinimize); };
+var maximizeWindow = function () { return electron_1.ipcRenderer.send(electronEvents_1.ElectronEvents.WindowMaximize); };
 var directoryContents = function (path, hideSystemFiles) { return __awaiter(void 0, void 0, void 0, function () {
     var results, list;
     return __generator(this, function (_a) {
@@ -58,7 +61,7 @@ var directoryContents = function (path, hideSystemFiles) { return __awaiter(void
                         .map(function (entry) { return ({
                         name: entry.name,
                         shortName: (0, truncateFilename_1.truncateFilename)(entry.name, ui_1.ui.maxFilenameLength),
-                        type: entry.isDirectory() ? 'directory' : 'file',
+                        type: entry.isDirectory() ? filetypes_1.Filetypes.Directory : filetypes_1.Filetypes.File,
                         path: "".concat(path, "/").concat(entry.name)
                     }); })
                         .sort(function (n1, n2) {
@@ -95,5 +98,13 @@ var selectFolder = function () { return __awaiter(void 0, void 0, void 0, functi
         }
     });
 }); };
-electron_1.contextBridge.exposeInMainWorld('api', { directoryContents: directoryContents, currentDirectory: currentDirectory, openFile: openFile, getBookmarks: getBookmarks, selectFolder: selectFolder });
+electron_1.contextBridge.exposeInMainWorld('api', {
+    currentDirectory: currentDirectory,
+    directoryContents: directoryContents,
+    getBookmarks: getBookmarks,
+    maximizeWindow: maximizeWindow,
+    minimizeWindow: minimizeWindow,
+    openFile: openFile,
+    selectFolder: selectFolder
+});
 //# sourceMappingURL=preload.js.map

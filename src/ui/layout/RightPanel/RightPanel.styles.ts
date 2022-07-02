@@ -3,7 +3,6 @@ import { useMakeStyles } from '../../../utils/hooks/useMakeStyles'
 export const useStyles = useMakeStyles(() => ({
   right: {
     alignContent: 'flex-start',
-    bgcolor: 'background.light',
     columnGap: 8,
     display: 'flex',
     flex: 3,

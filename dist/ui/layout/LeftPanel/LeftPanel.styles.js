@@ -13,7 +13,7 @@ exports.useStyles = (0, useMakeStyles_1.useMakeStyles)(function () { return ({
         flexDirection: 'column',
         flexGrow: 1,
         gap: 4,
-        overflowY: 'scroll',
+        overflowY: 'auto',
         p: 4
     }
 }); });

@@ -6,8 +6,10 @@ exports.ElectronEvents = void 0;
  */
 var ElectronEvents;
 (function (ElectronEvents) {
-    ElectronEvents["OpenFile"] = "openFile";
-    ElectronEvents["GetBookmarks"] = "getBookmarks";
-    ElectronEvents["SelectFolder"] = "selectFolder";
+    ElectronEvents["OpenFile"] = "OpenFile";
+    ElectronEvents["GetBookmarks"] = "GetBookmarks";
+    ElectronEvents["SelectFolder"] = "SelectFolder";
+    ElectronEvents["WindowMaximize"] = "WindowMaximize";
+    ElectronEvents["WindowMinimize"] = "WindowMinimize";
 })(ElectronEvents = exports.ElectronEvents || (exports.ElectronEvents = {}));
 //# sourceMappingURL=electronEvents.js.map

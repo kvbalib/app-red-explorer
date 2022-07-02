@@ -15,9 +15,12 @@ exports.useStyles = (0, useMakeStyles_1.useMakeStyles)(function () { return ({
         gridArea: 'nav',
         justifyContent: 'space-between',
         p: 4,
-        pt: 8,
         WebkitUserSelect: 'none',
         WebkitAppRegion: 'drag'
+    },
+    buttonLabel: {
+        lineHeight: 1,
+        mt: 2
     },
     buttonsWrapper: {
         display: 'flex',
@@ -29,11 +32,14 @@ exports.useStyles = (0, useMakeStyles_1.useMakeStyles)(function () { return ({
         color: 'primary.main',
         flexDirection: 'column',
         justifyContent: 'center',
-        mt: 2,
         WebkitAppRegion: 'no-drag'
     },
-    title: {
-        color: 'text.secondary'
+    windowControls: {
+        alignSelf: 'flex-start',
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        gap: 2,
+        WebkitAppRegion: 'no-drag'
     }
 }); });
 //# sourceMappingURL=AppBar.styles.js.map

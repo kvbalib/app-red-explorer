@@ -48,7 +48,6 @@ if (require('electron-squirrel-startup')) {
 }
 var createWindow = function () {
     var mainWindow = new electron_1.BrowserWindow({
-        titleBarStyle: 'hidden',
         frame: false,
         webPreferences: {
             nodeIntegration: true,
@@ -56,6 +55,13 @@ var createWindow = function () {
         }
     });
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+    electron_1.ipcMain.on(electronEvents_1.ElectronEvents.WindowMinimize, function () { return mainWindow.minimize(); });
+    electron_1.ipcMain.on(electronEvents_1.ElectronEvents.WindowMaximize, function () {
+        if (mainWindow.isMaximized())
+            mainWindow.unmaximize();
+        else
+            mainWindow.maximize();
+    });
     if (electron_is_dev_1["default"]) {
         mainWindow.webContents.openDevTools({ mode: 'detach' });
     }
@@ -71,7 +77,6 @@ electron_1.app.on('activate', function () {
         createWindow();
     }
 });
-// Preload event listeners
 electron_1.ipcMain.handle(electronEvents_1.ElectronEvents.OpenFile, function (event, args) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {

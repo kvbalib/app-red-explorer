@@ -51,18 +51,20 @@ exports.FilesystemItem = void 0;
 var jsx_runtime_1 = require("react/jsx-runtime");
 var system_1 = require("@mui/system");
 var fa_1 = require("react-icons/fa");
+var filetypes_1 = require("../../../constants/filetypes");
+var ui_1 = require("../../../constants/ui");
 var ButtonOverlay_1 = require("../ButtonOverlay");
 var FilesystemItem_styles_1 = require("./FilesystemItem.styles");
 var FilesystemItem = function (_a) {
     var item = _a.item, setPath = _a.setPath;
     var styles = (0, FilesystemItem_styles_1.useStyles)(null);
-    var isDirectory = item.type === 'directory';
+    var isDirectory = item.type === filetypes_1.Filetypes.Directory;
     var Icon = isDirectory ? fa_1.FaRegFolder : fa_1.FaFile;
     var handleSetPath = function () { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    if (!(item.type === 'directory')) return [3 /*break*/, 1];
+                    if (!isDirectory) return [3 /*break*/, 1];
                     setPath(item.path);
                     return [3 /*break*/, 3];
                 case 1: return [4 /*yield*/, window.api.openFile(item.path)];
@@ -78,7 +80,7 @@ var FilesystemItem = function (_a) {
     };
     return (
     // @TODO: implement drag and drop
-    (0, jsx_runtime_1.jsxs)(ButtonOverlay_1.ButtonOverlay, __assign({ styles: styles.item, onClick: handleSetPath, onRightClick: handleRightClick, isDoubleClick: true }, { children: [(0, jsx_runtime_1.jsx)(Icon, { size: 48 }, void 0), (0, jsx_runtime_1.jsx)(system_1.Box, { sx: styles.caption, children: item.shortName }, void 0)] }), item.name));
+    (0, jsx_runtime_1.jsxs)(ButtonOverlay_1.ButtonOverlay, __assign({ styles: styles.item, onClick: handleSetPath, onRightClick: handleRightClick, isDoubleClick: true }, { children: [(0, jsx_runtime_1.jsx)(Icon, { size: ui_1.ui.fileIconSize }, void 0), (0, jsx_runtime_1.jsx)(system_1.Box, { sx: styles.caption, children: item.shortName }, void 0)] }), item.name));
 };
 exports.FilesystemItem = FilesystemItem;
 //# sourceMappingURL=index.js.map
