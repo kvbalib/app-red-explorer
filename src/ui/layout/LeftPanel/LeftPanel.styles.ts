@@ -11,7 +11,7 @@ export const useStyles = useMakeStyles(() => ({
     flexDirection: 'column',
     flexGrow: 1,
     gap: 4,
-    overflowY: 'scroll',
+    overflowY: 'auto',
     p: 4,
   },
 }))
