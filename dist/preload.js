@@ -44,6 +44,8 @@ var promises_1 = require("fs/promises");
 var path_1 = __importDefault(require("path"));
 var electronEvents_1 = require("./constants/electronEvents");
 var regExp_1 = require("./constants/regExp");
+var ui_1 = require("./constants/ui");
+var truncateFilename_1 = require("./utils/helpers/truncateFilename");
 var directoryContents = function (path, hideSystemFiles) { return __awaiter(void 0, void 0, void 0, function () {
     var results, list;
     return __generator(this, function (_a) {
@@ -53,13 +55,12 @@ var directoryContents = function (path, hideSystemFiles) { return __awaiter(void
                 results = _a.sent();
                 list = results.filter(function (item) { return !regExp_1.regExp.systemFile.test(item.name); });
                 return [2 /*return*/, (hideSystemFiles ? list : results)
-                        .map(function (entry) {
-                        return {
-                            name: entry.name,
-                            type: entry.isDirectory() ? 'directory' : 'file',
-                            path: "".concat(path, "/").concat(entry.name)
-                        };
-                    })
+                        .map(function (entry) { return ({
+                        name: entry.name,
+                        shortName: (0, truncateFilename_1.truncateFilename)(entry.name, ui_1.ui.maxFilenameLength),
+                        type: entry.isDirectory() ? 'directory' : 'file',
+                        path: "".concat(path, "/").concat(entry.name)
+                    }); })
                         .sort(function (n1, n2) {
                         if (n1.type > n2.type)
                             return 1;
@@ -70,9 +71,7 @@ var directoryContents = function (path, hideSystemFiles) { return __awaiter(void
         }
     });
 }); };
-var currentDirectory = function () {
-    return process.cwd();
-};
+var currentDirectory = function () { return process.cwd(); };
 var openFile = function (path) { return electron_1.ipcRenderer.invoke(electronEvents_1.ElectronEvents.OpenFile, path); };
 var getBookmarks = function () { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
     switch (_a.label) {

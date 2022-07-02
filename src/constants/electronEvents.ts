@@ -2,7 +2,9 @@
  * Electron Renderer process to Main process events.
  */
 export enum ElectronEvents {
-  OpenFile = 'openFile',
-  GetBookmarks = 'getBookmarks',
-  SelectFolder = 'selectFolder',
+  OpenFile = 'OpenFile',
+  GetBookmarks = 'GetBookmarks',
+  SelectFolder = 'SelectFolder',
+  WindowMaximize = 'WindowMaximize',
+  WindowMinimize = 'WindowMinimize',
 }

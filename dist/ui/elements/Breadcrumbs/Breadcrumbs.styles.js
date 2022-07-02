@@ -5,11 +5,12 @@ var useMakeStyles_1 = require("../../../utils/hooks/useMakeStyles");
 exports.useStyles = (0, useMakeStyles_1.useMakeStyles)(function () { return ({
     root: {
         alignItems: 'center',
+        backgroundColor: 'background.lighter',
         color: 'text.secondary',
         display: 'flex',
-        flexFlow: 'row nowrap',
-        height: 16,
-        gap: 2,
+        flexFlow: 'row wrap',
+        minHeight: 20,
+        gap: 1,
         width: '100%',
         pl: 2
     },

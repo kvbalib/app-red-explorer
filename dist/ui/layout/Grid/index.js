@@ -14,12 +14,13 @@ exports.__esModule = true;
 exports.Grid = void 0;
 var jsx_runtime_1 = require("react/jsx-runtime");
 var system_1 = require("@mui/system");
-var Main_1 = require("../../views/Main");
 var AppBar_1 = require("../AppBar");
+var LeftPanel_1 = require("../LeftPanel");
+var RightPanel_1 = require("../RightPanel");
 var Grid_styles_1 = require("./Grid.styles");
 var Grid = function () {
     var styles = (0, Grid_styles_1.useStyles)(null);
-    return ((0, jsx_runtime_1.jsxs)(system_1.Box, __assign({ sx: styles.appContainer }, { children: [(0, jsx_runtime_1.jsx)(AppBar_1.AppBar, {}, void 0), (0, jsx_runtime_1.jsx)(Main_1.Main, {}, void 0)] }), void 0));
+    return ((0, jsx_runtime_1.jsxs)(system_1.Box, __assign({ sx: styles.appContainer }, { children: [(0, jsx_runtime_1.jsx)(AppBar_1.AppBar, {}, void 0), (0, jsx_runtime_1.jsxs)(system_1.Box, __assign({ sx: styles.main, component: 'main' }, { children: [(0, jsx_runtime_1.jsx)(LeftPanel_1.LeftPanel, {}, void 0), (0, jsx_runtime_1.jsx)(RightPanel_1.RightPanel, {}, void 0)] }), void 0)] }), void 0));
 };
 exports.Grid = Grid;
 //# sourceMappingURL=index.js.map

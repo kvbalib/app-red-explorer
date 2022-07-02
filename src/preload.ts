@@ -9,6 +9,10 @@ import { IFilesystemItem } from './models/Filesystem'
 import { IBookmark } from './models/Preload'
 import { truncateFilename } from './utils/helpers/truncateFilename'
 
+const minimizeWindow = () => ipcRenderer.send(ElectronEvents.WindowMinimize)
+
+const maximizeWindow = () => ipcRenderer.send(ElectronEvents.WindowMaximize)
+
 const directoryContents = async (path: string, hideSystemFiles: boolean) => {
   const results = await readdir(path, { withFileTypes: true })
   const list = results.filter((item) => !regExp.systemFile.test(item.name))
@@ -44,7 +48,15 @@ const selectFolder = async (): Promise<IBookmark | null> => {
   }
 }
 
-contextBridge.exposeInMainWorld('api', { directoryContents, currentDirectory, openFile, getBookmarks, selectFolder })
+contextBridge.exposeInMainWorld('api', {
+  currentDirectory,
+  directoryContents,
+  getBookmarks,
+  maximizeWindow,
+  minimizeWindow,
+  openFile,
+  selectFolder,
+})
 
 // Import types in src/models/Preload.d.ts
 export type DirectoryContentsType = typeof directoryContents
@@ -52,3 +64,5 @@ export type CurrentDirectoryType = typeof currentDirectory
 export type OpenFileType = typeof openFile
 export type GetBookmarksType = typeof getBookmarks
 export type SelectFolderType = typeof selectFolder
+export type MaximizeWindowType = typeof maximizeWindow
+export type MinimizeWindowType = typeof minimizeWindow

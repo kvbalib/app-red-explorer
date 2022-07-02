@@ -3,7 +3,7 @@
   "sideEffects": false,
   "productName": "red-explorer",
   "version": "1.0.0",
-  "description": "Simple explorer.",
+  "description": "Simple filesystem explorer.",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",

@@ -13,7 +13,6 @@ export const useStyles = useMakeStyles(() => ({
     gridArea: 'nav',
     justifyContent: 'space-between',
     p: 4,
-    pt: 8,
     WebkitUserSelect: 'none',
     WebkitAppRegion: 'drag',
   },
@@ -30,7 +29,11 @@ export const useStyles = useMakeStyles(() => ({
     mt: 2,
     WebkitAppRegion: 'no-drag',
   },
-  title: {
-    color: 'text.secondary',
+  windowControls: {
+    alignSelf: 'flex-start',
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    gap: 2,
+    WebkitAppRegion: 'no-drag',
   },
 }))

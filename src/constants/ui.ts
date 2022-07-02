@@ -5,4 +5,5 @@ export const ui = {
   maxFilenameLength: 16,
   spacingMultiplier: 4,
   hideSystemFiles: true, // TODO: move to ui toggle
+  windowControlsSize: 16,
 }

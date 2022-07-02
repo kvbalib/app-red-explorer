@@ -78,7 +78,7 @@ var FilesystemItem = function (_a) {
     };
     return (
     // @TODO: implement drag and drop
-    (0, jsx_runtime_1.jsxs)(ButtonOverlay_1.ButtonOverlay, __assign({ styles: styles.item, onClick: handleSetPath, onRightClick: handleRightClick, isDoubleClick: true }, { children: [(0, jsx_runtime_1.jsx)(Icon, { size: 48 }, void 0), (0, jsx_runtime_1.jsx)(system_1.Box, { sx: styles.caption, children: item.name }, void 0)] }), item.name));
+    (0, jsx_runtime_1.jsxs)(ButtonOverlay_1.ButtonOverlay, __assign({ styles: styles.item, onClick: handleSetPath, onRightClick: handleRightClick, isDoubleClick: true }, { children: [(0, jsx_runtime_1.jsx)(Icon, { size: 48 }, void 0), (0, jsx_runtime_1.jsx)(system_1.Box, { sx: styles.caption, children: item.shortName }, void 0)] }), item.name));
 };
 exports.FilesystemItem = FilesystemItem;
 //# sourceMappingURL=index.js.map

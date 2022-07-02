@@ -1,8 +1,7 @@
 import { Box, useTheme } from '@mui/system'
-import { MouseEventHandler } from 'react'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
-import { GiBirdClaw } from 'react-icons/gi'
+import { FaArrowLeft, FaArrowRight, FaWindowClose, FaWindowMaximize, FaWindowMinimize } from 'react-icons/fa'
 
+import { ui } from '../../../constants/ui'
 import { Typography } from '../../../theme/Variants'
 import { useMount } from '../../../utils/hooks/useMount'
 import { useNavigation } from '../../../utils/hooks/useNavigation'
@@ -26,18 +25,29 @@ export const AppBar = () => {
     return () => document.removeEventListener('keydown', handleKeyDown)
   })
 
+  const closeWindow = () => window.close()
+
   return (
     <Box sx={styles.container} component={'nav'}>
-      <GiBirdClaw color={palette.primary.main} size={48} />
-      <Text variant={Typography.overline} styles={styles.title} children={'Red Explorer'} />
       <Box sx={styles.buttonsWrapper}>
         <ButtonOverlay onClick={goBack} disabled={!canGoBack} styles={styles.iconButton}>
-          <FaArrowLeft color={canGoBack ? palette.primary.main : palette.background.light} size={32} />
+          <FaArrowLeft color={canGoBack ? palette.primary.main : palette.background.light} />
           <Text variant={Typography.overline} children={'Back'} />
         </ButtonOverlay>
         <ButtonOverlay onClick={goForward} disabled={!canGoForward} styles={styles.iconButton}>
-          <FaArrowRight color={canGoForward ? palette.primary.main : palette.background.light} size={32} />
+          <FaArrowRight color={canGoForward ? palette.primary.main : palette.background.light} />
           <Text variant={Typography.overline} children={'Next'} />
+        </ButtonOverlay>
+      </Box>
+      <Box sx={styles.windowControls}>
+        <ButtonOverlay onClick={window.api.minimizeWindow}>
+          <FaWindowMinimize color={palette.primary.main} size={ui.windowControlsSize} />
+        </ButtonOverlay>
+        <ButtonOverlay onClick={window.api.maximizeWindow}>
+          <FaWindowMaximize color={palette.primary.main} size={ui.windowControlsSize} />
+        </ButtonOverlay>
+        <ButtonOverlay onClick={closeWindow}>
+          <FaWindowClose color={palette.primary.main} size={ui.windowControlsSize} />
         </ButtonOverlay>
       </Box>
     </Box>

@@ -4,7 +4,9 @@ exports.palette = void 0;
 exports.palette = {
     background: {
         dark: '#3d3d3d',
-        light: '#7e7e7e'
+        darker: 'rgba(0, 0, 0, 0.05)',
+        light: '#7e7e7e',
+        lighter: 'rgba(255, 255, 255, 0.05)'
     },
     error: '#e54220',
     primary: {

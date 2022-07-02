@@ -14,6 +14,16 @@ exports.useStyles = (0, useMakeStyles_1.useMakeStyles)(function () { return ({
         minHeight: '100vh',
         overflow: 'hidden',
         position: 'relative'
+    },
+    main: {
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        gridArea: 'main',
+        maxHeight: '100%',
+        maxWidth: '100vw',
+        overflowY: 'hidden',
+        position: 'relative',
+        width: '100%'
     }
 }); });
 //# sourceMappingURL=Grid.styles.js.map

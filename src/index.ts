@@ -14,7 +14,6 @@ if (require('electron-squirrel-startup')) {
 
 const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
-    titleBarStyle: 'hidden',
     frame: false,
     webPreferences: {
       nodeIntegration: true,
@@ -23,6 +22,13 @@ const createWindow = (): void => {
   })
 
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
+
+  ipcMain.on(ElectronEvents.WindowMinimize, () => mainWindow.minimize())
+
+  ipcMain.on(ElectronEvents.WindowMaximize, () => {
+    if (mainWindow.isMaximized()) mainWindow.unmaximize()
+    else mainWindow.maximize()
+  })
 
   if (electronIsDev) {
     mainWindow.webContents.openDevTools({ mode: 'detach' })
@@ -42,8 +48,6 @@ app.on('activate', () => {
     createWindow()
   }
 })
-
-// Preload event listeners
 
 ipcMain.handle(ElectronEvents.OpenFile, async (event, args) => {
   await shell.openPath(args)
